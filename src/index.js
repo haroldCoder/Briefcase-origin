@@ -6,7 +6,7 @@ import axios from 'axios';
 
 ReactDOM.render(
   <h2>hello</h2>,
-  document.getElementById('root')
+  document.getElementById('app')
 );
 $("body").css("margin","0 0");
 alert(document.cookie.toString());

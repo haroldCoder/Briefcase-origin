@@ -1,141 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
-:root{
-  --bs-black: rgb(153, 153, 153);
+.App {
+  text-align: center;
 }
-#root{
-	background-color: #131313;
-	height: auto;
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
-.main{
-	width: 100%;
-	height: 100%;
-	padding-left: 0% !important;
-	padding-right: 0% !important;
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
-.navbar{
-	height: 15vh;
-	padding-top: 0 !important;
-	justify-content:initial !important;
-	flex-wrap: nowrap !important;
-	box-shadow: 0 0 26px 0 #60fff775;
-	padding-bottom: 10px !important;
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
-.content{
-	width: 70%;
-	height: 100%;
-	background-color: #000;
-	margin: 0 2%;
-	align-items: center;
-	padding-left: 10%;
+
+.App-link {
+  color: #61dafb;
 }
-.home{
-	margin-top: 2%;
-	margin-left: 0%;
-	width: 100%;
-}
-.home > .info{
-	width: 98%;
-	height: 100%;
-	background-color: #EEEEEE0F;
-	backdrop-filter: blur(6px);
-	padding-top: 5px;
-	margin-left: 1%;
-}
-.info > .block{
-	width: 50%;
-}
-.info > .block > .present{
-	height: auto;
-	margin: .5% 1%;
-	background-color: #ffffff60;
-	padding: 8px 8px 8px 8px;
-}
-.present > .img{
-	width: 33vh;
-	height: auto;
-	border: 3px solid #39f2ff;
-	padding: 8px 8px 9px 8px;
-}
-.img > img{
-	width: 30vh;
-	height: 35vh;
-}
-.data{
-	width: 60%;
-}
-.data > .column > h4{
-	border: 1.5px solid #39f2ff;
-	padding: 7px 7px 7px 7px;
-	font-family:serif;
-	color: #0dbCfd;
-}
-.info2{
-	margin-bottom: 0px !important;
-}
-.info > .responsive{
-	width: 50%;
-}
-.responsive > .col-md-4{
-	width: 100% !important;
-}
-.responsive > .col-md-4 > #word{
-	font-family: 'Staatliches', cursive;
-	font-size: 60px;
-}
-.panel > .input{
-	width: 40%;
-	height: auto;
-	background: #00000048;
-	backdrop-filter: blur(6px);
-	position: absolute;
-	top: 20%;
-	left: 30%;
-}
-.inp{
-	background: transparent !important;
-	outline: none !important;
-	color: #FFF !important;
-}
-.inp:focus{
-	background: #FFFFFF40 !important;
-}
-#log:hover{
-	background: #1212ff;
-	color: #FFF;
-	padding: 6px 6px 6px 6px;
-	border-radius: 10px;
-}
-div#div_file{
-	position: relative;
-	width: 50px;
-	height: 50px;
-    background: #2299E3;
-	border-radius: 100%;
-	margin-right: 20px;
-}
-input#cover{
-	position: absolute;
-	bottom: 0px;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	width: 100%;
-	height: 100%;
-	opacity: 0;
-}
-#text{
-	text-align: center;
-	color: blanchedalmond;
-}
-#koder{
-	width: 35vh;
-	height: 35vh;
-	border-radius: 20px;
-	border: 4px solid #FFF;
-}
-.item{
-	border-bottom: 3px solid #39f2ff;
-}
-.dark{
-	color: var(--bs-black);
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

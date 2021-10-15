@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.js';
 import $ from 'jquery';
-import axios from 'axios';
 
 ReactDOM.render(
   <h2>hello</h2>,

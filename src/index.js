@@ -4,9 +4,6 @@ import App from './App.js';
 import $ from 'jquery';
 import axios from 'axios';
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
 ReactDOM.render(
   <App/>,
   document.getElementById('root')

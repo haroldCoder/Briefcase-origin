@@ -5,7 +5,7 @@ import $ from 'jquery';
 import axios from 'axios';
 
 ReactDOM.render(
-  <App/>,
+  <h2>hello</h2>,
   document.getElementById('root')
 );
 $("body").css("margin","0 0");

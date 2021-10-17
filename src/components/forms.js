@@ -135,7 +135,7 @@ class Forms extends Component{
 				<input type="password" className="inp" id="password" value={this.state.password} onChange={this.onChangePassword}/>
 				<button className="btn btn-primary" type="submit">{this.state.intro}</button>
 				<GoogleLogin
-				 clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
+				 clientId="79295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
 				 buttonText="Login"
 				 onSuccess={this.responseGoogle}
 				 onFailure={this.responseGoogle}

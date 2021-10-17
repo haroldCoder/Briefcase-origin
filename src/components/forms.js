@@ -128,6 +128,7 @@ class Forms extends Component{
 			<div className="form container">
 			<h1>{this.state.intro}</h1>
 			<form onSubmit={this.submitData}>
+				<h2>Name</h2>
 				<input type="text" className="inp" id="name" value={this.state.name} onChange={this.onChangeName}/>
 				<h2>E-mail</h2>
 				<input type="text" className="inp" id="email" value={this.state.email} onChange={this.onChangeEmail}/>
@@ -135,7 +136,7 @@ class Forms extends Component{
 				<input type="password" className="inp" id="password" value={this.state.password} onChange={this.onChangePassword}/>
 				<button className="btn btn-primary" type="submit">{this.state.intro}</button>
 				<GoogleLogin
-				 clientId="79295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
+				 clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
 				 buttonText="Login"
 				 onSuccess={this.responseGoogle}
 				 onFailure={this.responseGoogle}
@@ -146,8 +147,7 @@ class Forms extends Component{
 				<h3 onClick={this.Press}>you are going to <b id="log">{this.state.end}</b></h3>
 				<h5>Copyright ©Coderx Development 2021</h5>
 			</footer>
-	       </div>
-		        
+	       </div>   
 		 );
 		}
 	}

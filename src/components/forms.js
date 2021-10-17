@@ -124,8 +124,8 @@ class Forms extends Component{
 	       </div>
 		  );
 		else{
-			return(
-				<div className="form container">
+		 return(
+			<div className="form container">
 		        	<h1>{this.state.intro}</h1>
 		        	<form onSubmit={this.submitData}>
 		        		<h2>E-mail</h2>
@@ -146,7 +146,7 @@ class Forms extends Component{
 		        		<h5>Copyright ©Coderx Development 2021</h5>
 		        	</footer>
 		     </div>
-			);
+		 );
 		}
 	}
 	windowRegister = (name,email) =>{

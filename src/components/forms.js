@@ -14,8 +14,8 @@ class Forms extends Component{
 		this.profile = new Profile(); 
 	}
 	state = {
-		intro: 'Login',
-		end: 'Register',
+		intro: 'Register',
+		end: 'Login',
 		name: '',
 		email: '',
 		password: '',
@@ -155,7 +155,6 @@ class Forms extends Component{
 			}
 		}
 		if(b == 'V'){
-				
 			alert("user exist");
 		}
 		else{
@@ -220,6 +219,8 @@ class Forms extends Component{
 			<div className="form container">
 			<h1>{this.state.intro}</h1>
 			<form onSubmit={this.submitData}>
+				<h2>Name</h2>
+				<input type="text" className="inp" id="name" value={this.state.name} onChange={this.onChangeName}/>
 				<h2>E-mail</h2>
 				<input type="text" className="inp" id="email" value={this.state.email} onChange={this.onChangeEmail}/>
 				<h2>Password</h2>
@@ -237,7 +238,7 @@ class Forms extends Component{
 				<h3 onClick={this.Press}>you are going to <b id="log">{this.state.end}</b></h3>
 				<h5>Copyright ©Coderx Development 2021</h5>
 			</footer>
-	       </div> 
+	       </div>
 		 );
 		}
 	}

@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
 import $ from 'jquery';
-import { initializeApp } from 'firebase/app';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import PanelP from './components/panelprofile.js';

@@ -14,8 +14,8 @@ class Forms extends Component{
 		this.profile = new Profile(); 
 	}
 	state = {
-		intro: 'Register',
-		end: 'Login',
+		intro: 'Login',
+		end: 'Register',
 		name: '',
 		email: '',
 		password: '',
@@ -220,7 +220,6 @@ class Forms extends Component{
 			<div className="form container">
 			<h1>{this.state.intro}</h1>
 			<form onSubmit={this.submitData}>
-				<h2>Name</h2>
 				<h2>E-mail</h2>
 				<input type="text" className="inp" id="email" value={this.state.email} onChange={this.onChangeEmail}/>
 				<h2>Password</h2>

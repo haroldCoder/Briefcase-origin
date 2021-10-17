@@ -6,6 +6,7 @@ import { GoogleLogin } from 'react-google-login';
 import contact from '../img/contact.png';
 import Profile from "./profile";
 import PanelP from "./panelprofile";
+import Cookies from "universal-cookie";
 
 class Forms extends Component{
 	constructor(props){
@@ -21,9 +22,17 @@ class Forms extends Component{
 		data: []
 	}
 	componentDidMount(){
+	  if($(".input").length > 0)
+       this.RequireData();
+	   this.style()
+	}
+	componentDidUpdate(){
 		if($(".input").length > 0)
 		  this.RequireData()
-		  $(".form > form > input").css("border","none");
+		  this.style()
+	}
+	style = () =>{
+		$(".form > form > input").css("border","none");
 		  $(".form > form > input").css("border-bottom","2px solid #00FFAF");
 		  $(".form > form > input").css("background","none");
 		  $(".form > form > input").css("width","100%");
@@ -51,10 +60,6 @@ class Forms extends Component{
 		  $(".form > form > button").eq(1).css("margin","1% 10%")
 		  $(".form > form > button").eq(1).css("justify-content","center");
 	}
-	componentDidUpdate(){
-		if($(".input").length > 0)
-		  this.RequireData()
-	}
 	RequireData = async() =>{
 		const res = await axios.get('http://localhost:8080/api/users');
 		this.setState({data: res.data});
@@ -81,11 +86,67 @@ class Forms extends Component{
 	submitData = async(e) =>{
 		if(this.state.name != '' && this.state.email != '' && this.state.password != ''){
 			e.preventDefault();
-			this.succesR(this.state.name,this.state.email,this.state.password);
+			if(this.state.intro == "Register")
+			   this.succesR(this.state.name,this.state.email,this.state.password);
+			else
+			   this.succesL(this.state.email,this.state.password);
 		}
 		else{
 			e.preventDefault()
 			alert("filds all fields")
+		}
+	}
+	formData = () =>{
+		if(this.state.intro == "Register")
+		  return(
+			<div className="form container">
+			<h1>{this.state.intro}</h1>
+			<form onSubmit={this.submitData}>
+				<h2>Name</h2>
+				<input type="text" className="inp" id="name" value={this.state.name} onChange={this.onChangeName}/>
+				<h2>E-mail</h2>
+				<input type="text" className="inp" id="email" value={this.state.email} onChange={this.onChangeEmail}/>
+				<h2>Password</h2>
+				<input type="password" className="inp" id="password" value={this.state.password} onChange={this.onChangePassword}/>
+				<button className="btn btn-primary" type="submit">{this.state.intro}</button>
+				<GoogleLogin
+				 clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
+				 buttonText="Login"
+				 onSuccess={this.responseGoogle}
+				 onFailure={this.responseGoogle}
+				 cookiePolicy={'single_host_origin'}
+			   />
+			</form>
+			<footer>
+				<h3 onClick={this.Press}>you are going to <b id="log">{this.state.end}</b></h3>
+				<h5>Copyright ©Coderx Development 2021</h5>
+			</footer>
+	       </div>
+		  );
+		else{
+			return(
+				<div className="form container">
+		        	<h1>{this.state.intro}</h1>
+		        	<form onSubmit={this.submitData}>
+		        		<h2>E-mail</h2>
+		        		<input type="text" className="inp" id="email" value={this.state.email} onChange={this.onChangeEmail}/>
+		        		<h2>Password</h2>
+		        		<input type="password" className="inp" id="password" value={this.state.password} onChange={this.onChangePassword}/>
+		        		<button className="btn btn-primary" type="submit">{this.state.intro}</button>
+						<GoogleLogin
+                         clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
+                         buttonText="Login"
+                         onSuccess={this.responseGoogle}
+						 onFailure={this.responseGoogle}
+                         cookiePolicy={'single_host_origin'}
+                       />
+		        	</form>
+		        	<footer>
+		        		<h3 onClick={this.Press}>you are going to <b id="log">{this.state.end}</b></h3>
+		        		<h5>Copyright ©Coderx Development 2021</h5>
+		        	</footer>
+		     </div>
+			);
 		}
 	}
 	windowRegister = (name,email) =>{
@@ -102,6 +163,41 @@ class Forms extends Component{
 			document.querySelector('.form')
 		);
 	}
+	windowLogin = (name,color,messagge) =>{
+		$(".home").append(`
+		 <div class="${color}">
+		  <h2>${messagge}${name}</h2>
+		 </div>
+		`)
+	}
+	succesL = (email,password) =>{
+		let index = 0;
+		let b = 'F';
+		for(let i = 0; i<this.state.data.length; i++){
+			if(this.state.data[i].email == email && this.state.data[i].password == password){
+				index = i;
+				b = 'V';
+			}
+		}
+		if(b == 'V'){
+			this.profile.UI(this.state.data[index].name,email,true);
+			this.windowLogin(this.state.data[index].name,"win bg-success d-flex","welcome ");
+		}
+		else{
+			this.windowLogin(this.state.data[index].name,"win bg-danger d-flex","User no register ");
+		}
+		$(".win").css("padding","10px 10px");
+		$(".win").css("position","absolute");
+		$(".win").css("top","20%");
+		$(".win").css("left","26%");
+		$(".win").css("width","50%");
+		$(".win").css("justify-content","center")
+		$(".win > h2").css("font-family","fantasy");
+		$(".win > h2").css("color","#FFF");
+		$(".win").fadeOut(4000,()=>{
+			$(".win").remove()
+		})
+	}
 	succesR = (name, email, password) =>{
 		let index = 0;
 		let b = 'F';
@@ -111,12 +207,13 @@ class Forms extends Component{
 				b = 'V';
 			}
 		}
-		if(b == 'V'){	
+		if(b == 'V'){
+				
 			alert("user exist");
 		}
 		else{
 			this.windowRegister(name,email);
-			this.profile.UI(name,email);
+			this.profile.UI(name,email,false);  
 			$(".rpanel").css("background","#000118e8");
 			$(".rpanel").css("height","100%");
 			$(".form").removeClass("container");
@@ -145,31 +242,9 @@ class Forms extends Component{
 		}
 	}
 	Ui = () =>{
-			return(
-		        <div className="form container">
-		        	<h1>{this.state.intro}</h1>
-		        	<form onSubmit={this.submitData}>
-		        		<h2>Name</h2>
-		        		<input type="text" className="inp" id="name" value={this.state.name} onChange={this.onChangeName}/>
-		        		<h2>E-mail</h2>
-		        		<input type="text" className="inp" id="email" value={this.state.email} onChange={this.onChangeEmail}/>
-		        		<h2>Password</h2>
-		        		<input type="password" className="inp" id="password" value={this.state.password} onChange={this.onChangePassword}/>
-		        		<button className="btn btn-primary" type="submit">{this.state.intro}</button>
-						<GoogleLogin
-                         clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
-                         buttonText="Login"
-                         onSuccess={this.responseGoogle}
-						 onFailure={this.responseGoogle}
-                         cookiePolicy={'single_host_origin'}
-                       />
-		        	</form>
-		        	<footer>
-		        		<h3 onClick={this.Press}>you are going to <b id="log">{this.state.end}</b></h3>
-		        		<h5>Copyright ©Coderx Development 2021</h5>
-		        	</footer>
-		     </div>
-			);
+		return(
+			<this.formData/>
+		);
 	}
 	render(){
 		return(
@@ -177,8 +252,17 @@ class Forms extends Component{
 		)
 	}
 	responseGoogle = (res) =>{
+		let cookie = new Cookies();
 		if(this.state.intro == "Register"){
 		  this.succesR(res.profileObj.name,res.profileObj.email);
+		  cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+		}
+		else{
+			cookie.set("name",res.profileObj.name,{path: '/'});
+			cookie.set("email",res.profileObj.email,{path: '/'});
+			cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+			this.succesL(res.profileObj.email,res.profileObj.password);
+			
 		}
 	}
 }

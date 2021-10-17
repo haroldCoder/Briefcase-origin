@@ -105,37 +105,15 @@
 	padding: 6px 6px 6px 6px;
 	border-radius: 10px;
 }
-div#div_file{
-	position: relative;
-	width: 50px;
-	height: 50px;
-    background: #2299E3;
-	border-radius: 100%;
-	margin-right: 20px;
-}
-input#cover{
-	position: absolute;
-	bottom: 0px;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	width: 100%;
-	height: 100%;
-	opacity: 0;
-}
-#text{
-	text-align: center;
-	color: blanchedalmond;
-}
 #koder{
-	width: 35vh;
-	height: 35vh;
+	width: 34%;
+	height: 30vh;
 	border-radius: 20px;
-	border: 4px solid #FFF;
-}
-.item{
-	border-bottom: 3px solid #39f2ff;
+	border: 3px solid #0dbCfd;
 }
 .dark{
-	color: var(--bs-black);
+	color: #8a8a8a;
+	border-bottom: 3px solid #00eeff;
+	font-family: fantasy;
+	padding: 5px 1.5%;
 }

@@ -187,20 +187,7 @@ class Forms extends Component{
 			})
 		}
 	}
-	responseGoogle = (res) =>{
-		 let cookie = new Cookies();
-		 if(this.state.intro == "Register"){
-		   this.succesR(res.profileObj.name,res.profileObj.email);
-		   cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
-		 }
-		 else{
-		 	cookie.set("name",res.profileObj.name,{path: '/'});
-		 	cookie.set("email",res.profileObj.email,{path: '/'});
-		 	cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
-		 	this.succesL(res.profileObj.email,res.profileObj.password);
-		 }
-		 console.log(res.profileObj);
-	}
+	
 	press = () =>{
 		if(this.state.intro == "Register")
 		  return(
@@ -268,6 +255,20 @@ class Forms extends Component{
 		return(
 		 <this.Ui/>
 		)
+	}
+	responseGoogle = (res) =>{
+		 let cookie = new Cookies();
+		 if(this.state.intro == "Register"){
+		   this.succesR(res.profileObj.name,res.profileObj.email);
+		   cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+		 }
+		 else{
+		 	cookie.set("name",res.profileObj.name,{path: '/'});
+		 	cookie.set("email",res.profileObj.email,{path: '/'});
+		 	cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+		 	this.succesL(res.profileObj.email,res.profileObj.password);
+		 }
+		 console.log(res.profileObj);
 	}
 }
 export default Forms;

@@ -203,9 +203,9 @@ class Forms extends Component{
 				
 			</form>
 			<GoogleLogin
-				 clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
+				 clientId="709295496820-i7if56ountpgrq8u94iq06cf5q35ejn8.apps.googleusercontent.com"
 				 buttonText="Login"
-				 onSuccess={()=>this.responseGoogle}
+				 onSuccess={this.responseGoogle}
 				 onFailure={this.responseGoogle}
 			   />
 			<footer>

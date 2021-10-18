@@ -34,11 +34,24 @@ class Home extends Component{
 	componentDidMount(){
 		this.Style();
 		this.Count()
+		this.getCode()
 	}
 	componentDidUpdate(){
 		if(2 == 2)
 		  this.Count()
 		  this.Style()
+	}
+	getCode = async() =>{
+		const res = await axios.get('http://localhost:8080/api/koder');
+		this.setState({
+			name: res.data[0].name,
+			email: res.data[0].email,
+			cel: res.data[0].cel,
+			exp: res.data[0].exp,
+			word: res.data[0].word,
+			reside: res.data[0].reside,
+			lastname: res.data[0].lastname
+		});
 	}
 	render(){
 		return(

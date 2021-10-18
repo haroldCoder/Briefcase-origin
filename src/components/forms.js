@@ -187,8 +187,7 @@ class Forms extends Component{
 			})
 		}
 	}
-	
-	press = () =>{
+	Ui = () =>{
 		if(this.state.intro == "Register")
 		  return(
 			<div className="form container">
@@ -205,7 +204,6 @@ class Forms extends Component{
 				 clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
 				 buttonText="Login"
 				 onSuccess={this.responseGoogle}
-				 onFailure={this.responseGoogle}
 				 cookiePolicy={'single_host_origin'}
 				 isSignedIn={true}
 			   />
@@ -244,12 +242,6 @@ class Forms extends Component{
 	       </div>
 		 );
 		}
-	}
-	Ui = () =>{
-		
-		return(
-			<this.press/>
-		);
 	}
 	render(){
 		return(

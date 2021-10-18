@@ -17,7 +17,7 @@ $(".navbar").append(`
 			<div class="profile"></div>
       <h1 class="profile">hello</h1>
 `);
-if(cookie.get("name") != " " && cookie.get("email") != " " && cookie.get("cover") != " "){
+if(cookie.get("name") == "" && cookie.get("email") == " " && cookie.get("cover") == " "){
    $(".profile").remove();
 }
 else{

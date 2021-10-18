@@ -187,7 +187,7 @@ class Forms extends Component{
 			})
 		}
 	}
-	Ui = () =>{
+	press = () =>{
 		if(this.state.intro == "Register")
 		  return(
 			<div className="form container">
@@ -243,6 +243,11 @@ class Forms extends Component{
 	       </div>
 		 );
 		}
+	}
+	Ui = () =>{
+		return(
+			<this.press/>
+		);
 	}
 	render(){
 		return(

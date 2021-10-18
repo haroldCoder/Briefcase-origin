@@ -199,6 +199,7 @@ class Forms extends Component{
 		 	cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
 		 	this.succesL(res.profileObj.email,res.profileObj.password);
 		 }
+		 console.log(res.profileObj);
 	}
 	press = () =>{
 		if(this.state.intro == "Register")

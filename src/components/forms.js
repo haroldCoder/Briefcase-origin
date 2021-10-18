@@ -214,15 +214,13 @@ class Forms extends Component{
 				<input type="password" className="inp" id="password" value={this.state.password} onChange={this.onChangePassword}/>
 				<button className="btn btn-primary" type="submit">{this.state.intro}</button>
 				<GoogleLogin
-                  clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
-                  render={renderProps => (
-                    <button onClick={this.responseGoogle} disabled={this.responseGoogle}>This is my custom Google button</button>
-                  )}
-                  buttonText="Login"
-                  onSuccess={this.responseGoogle}
-                  onFailure={this.responseGoogle}
-                  cookiePolicy={'single_host_origin'}
-              />
+				 clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
+				 buttonText="Login"
+				 onSuccess={this.responseGoogle}
+				 onFailure={this.responseGoogle}
+				 cookiePolicy={'single_host_origin'}
+				 isSignedIn={true}
+			   />
 			</form>
 			<footer>
 				<h3 onClick={this.Press}>you are going to <b id="log">{this.state.end}</b></h3>

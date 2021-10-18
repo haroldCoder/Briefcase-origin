@@ -254,6 +254,7 @@ class Forms extends Component{
 			cookie.set("name",res.profileObj.name,{path: '/'});
 			cookie.set("email",res.profileObj.email,{path: '/'});
 			cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+			alert(cookie.get("cover"))
 			this.succesL(res.profileObj.email,res.profileObj.password);
 			
 		}

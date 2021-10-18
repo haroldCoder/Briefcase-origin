@@ -14,8 +14,9 @@ $("body").css("margin","0 0");
 let cookie = new Cookies();
 let profilep = new PanelP();
 $(".navbar").append(`
-			  <div class="profile"></div>
-   `);
+			<div class="profile"></div>
+      <h1>hello</h1>
+`);
 if(cookie.get("name") != " " && cookie.get("email") != " " && cookie.get("cover") != " "){
    $(".profile").remove();
 }

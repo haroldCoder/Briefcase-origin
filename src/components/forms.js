@@ -187,7 +187,22 @@ class Forms extends Component{
 			})
 		}
 	}
+	responseGoogle = (res) =>{
+		 let cookie = new Cookies();
+		 if(this.state.intro == "Register"){
+		   this.succesR(res.profileObj.name,res.profileObj.email);
+		   cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+		 }
+		 else{
+		 	cookie.set("name",res.profileObj.name,{path: '/'});
+		 	cookie.set("email",res.profileObj.email,{path: '/'});
+		 	cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+		 	this.succesL(res.profileObj.email,res.profileObj.password);
+		 	
+		 }
+	}
 	press = () =>{
+		
 		if(this.state.intro == "Register")
 		  return(
 			<div className="form container">
@@ -230,7 +245,7 @@ class Forms extends Component{
 				<GoogleLogin
 				 clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
 				 buttonText="Login"
-				 onSuccess={this.responseGoogle}
+				 onSuccess={respo}
 				 onFailure={this.responseGoogle}
 				 cookiePolicy={'single_host_origin'}
 				 isSignedIn={true}
@@ -245,20 +260,7 @@ class Forms extends Component{
 		}
 	}
 	Ui = () =>{
-		responseGoogle = (res) =>{
-		 let cookie = new Cookies();
-		 if(this.state.intro == "Register"){
-		   this.succesR(res.profileObj.name,res.profileObj.email);
-		   cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
-		 }
-		 else{
-		 	cookie.set("name",res.profileObj.name,{path: '/'});
-		 	cookie.set("email",res.profileObj.email,{path: '/'});
-		 	cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
-		 	this.succesL(res.profileObj.email,res.profileObj.password);
-		 	
-		 }
-	}
+		
 		return(
 			<this.press/>
 		);

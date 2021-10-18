@@ -204,8 +204,8 @@ class Forms extends Component{
 				 clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
 				 buttonText="Login"
 				 onSuccess={this.responseGoogle}
+				 onFailure={this.responseGoogle}
 				 cookiePolicy={'single_host_origin'}
-				 isSignedIn={true}
 			   />
 			</form>
 			<footer>
@@ -219,8 +219,6 @@ class Forms extends Component{
 			<div className="form container">
 			<h1>{this.state.intro}</h1>
 			<form onSubmit={this.submitData}>
-			    <h2>Name</h2>
-				<input type="text" className="inp" id="name" value={this.state.name} onChange={this.onChangeName}/>
 				<h2>E-mail</h2>
 				<input type="text" className="inp" id="email" value={this.state.email} onChange={this.onChangeEmail}/>
 				<h2>Password</h2>
@@ -232,7 +230,6 @@ class Forms extends Component{
 				 onSuccess={this.responseGoogle}
 				 onFailure={this.responseGoogle}
 				 cookiePolicy={'single_host_origin'}
-				 isSignedIn={true}
 			   />
 			</form>
 			<footer>
@@ -249,8 +246,18 @@ class Forms extends Component{
 		)
 	}
 	responseGoogle = (res) =>{
-		 let cookie = new Cookies();
-		 console.log(res.profileObj);
+		let cookie = new Cookies();
+		if(this.state.intro == "Register"){
+		  this.succesR(res.profileObj.name,res.profileObj.email);
+		  cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+		}
+		else{
+			cookie.set("name",res.profileObj.name,{path: '/'});
+			cookie.set("email",res.profileObj.email,{path: '/'});
+			cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+			this.succesL(res.profileObj.email,res.profileObj.password);
+			
+		}
 	}
 }
 export default Forms;

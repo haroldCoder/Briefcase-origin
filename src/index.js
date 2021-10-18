@@ -6,7 +6,6 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import PanelP from './components/panelprofile.js';
 
-
 ReactDOM.render(
   <App/>,
   document.getElementById('root')

@@ -206,6 +206,7 @@ class Forms extends Component{
 				 onSuccess={this.responseGoogle}
 				 onFailure={this.responseGoogle}
 				 cookiePolicy={'single_host_origin'}
+				 isSignedIn={true}
 			   />
 			</form>
 			<footer>

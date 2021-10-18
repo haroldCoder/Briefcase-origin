@@ -268,6 +268,5 @@ class Forms extends Component{
 		 <this.Ui/>
 		)
 	}
-	}
 }
 export default Forms;

@@ -218,7 +218,7 @@ class Forms extends Component{
 		 return(
 			<div className="form container">
 			<h1>{this.state.intro}</h1>
-			<form onSubmit={this.submitData}>
+			<form >
 				<h2>E-mail</h2>
 				<input type="text" className="inp" id="email" value={this.state.email} onChange={this.onChangeEmail}/>
 				<h2>Password</h2>

@@ -200,14 +200,13 @@ class Forms extends Component{
 				<h2>Password</h2>
 				<input type="password" className="inp" id="password" value={this.state.password} onChange={this.onChangePassword}/>
 				<button className="btn btn-primary" type="submit">{this.state.intro}</button>
-				
-			</form>
-			<GoogleLogin
+				<GoogleLogin
 				 clientId="709295496820-i7if56ountpgrq8u94iq06cf5q35ejn8.apps.googleusercontent.com"
 				 buttonText="Login"
 				 onSuccess={this.responseGoogle}
 				 onFailure={this.responseGoogle}
 			   />
+			</form>
 			<footer>
 				<h3 onClick={this.Press}>you are going to <b id="log">{this.state.end}</b></h3>
 				<h5>Copyright ©Coderx Development 2021</h5>

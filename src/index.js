@@ -15,7 +15,6 @@ let cookie = new Cookies();
 let profilep = new PanelP();
 $(".navbar").append(`
 			<div class="profile"></div>
-      <h1 class="profile">hello</h1>
 `);
 if(cookie.get("name") == "" && cookie.get("email") == " " && cookie.get("cover") == " "){
    $(".profile").remove();
@@ -25,4 +24,5 @@ else{
     <img src={cookie.get('cover')} style={{width: '70px', height: '70px'}} onClick={()=>profilep.UI(cookie.get("name"),cookie.get("email"),cookie.get("cover"),true)}/>,
     document.querySelector(".profile")
   );
+  $(".profile").css("margin","4%");
 }

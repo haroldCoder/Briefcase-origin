@@ -63,7 +63,7 @@ class Forms extends Component{
 		  $(".form > form > button").eq(1).css("justify-content","center");
 	}
 	RequireData = async() =>{
-		const res = await axios.get('http://localhost:8080/api/user');
+		const res = await axios.get('http://localhost:8080/api/users');
 		this.setState({data: res.data});
 	}
 	Press = () =>{

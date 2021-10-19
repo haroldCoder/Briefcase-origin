@@ -11,7 +11,6 @@ class Profile extends Component{
 		`);
 		let profilep = new PanelP();
 		let cookie = new Cookies();
-		alert(cookie.get("cover"))
 		   ReactDOM.render(
 			 <img src={cookie.get("cover")} style={{width: '70px', height: '70px'}} onClick={()=>profilep.UI(name,email,cookie.get("cover"),conf)}/>,
 			 document.querySelector(".profile")

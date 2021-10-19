@@ -18,6 +18,7 @@ $(".navbar").append(`
 `);
 if(cookie.get("name") == " " && cookie.get("email") == " " && cookie.get("cover") == " "){
    $(".profile").remove();
+   alert("$")
 }
 else{
   ReactDOM.render(

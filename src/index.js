@@ -16,7 +16,7 @@ let profilep = new PanelP();
 $(".navbar").append(`
 			<div class="profile"></div>
 `);
-if(cookie.get("name") == "" && cookie.get("email") == " " && cookie.get("cover") == " "){
+if(cookie.get("name") == " " && cookie.get("email") == " " && cookie.get("cover") == " "){
    $(".profile").remove();
 }
 else{

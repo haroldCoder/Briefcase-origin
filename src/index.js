@@ -5,7 +5,6 @@ import $ from 'jquery';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import PanelP from './components/panelprofile.js';
-import './server.js';
 
 ReactDOM.render(
   <App/>,

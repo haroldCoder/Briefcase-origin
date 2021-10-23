@@ -42,7 +42,7 @@ class Home extends Component{
 		  this.Style()
 	}
 	getCode = async() =>{
-		const res = await axios.get('https://api.jsonbin.io/b/616e19da9548541c29c51c38');
+		const res = await axios.get('http://localhost:8080/api/koder');
 		this.setState({
 			name: res.data[0].name,
 			email: res.data[0].email,

@@ -1,11 +1,31 @@
 import { Component } from "react";
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import $, { data } from 'jquery';
 import user from '../img/user.png';
 import Cookies from 'universal-cookie';
+import axios from "axios";
+import Forms from "./forms";
 
 class PanelP extends Component{
-     UI = (name,email,cover,confirm) =>{
+	state ={
+		datai: [],
+	}
+     UI = async(name,email,cover,confirm) =>{
+		const res = await axios.get('https://data-base-3.herokuapp.com/estudiantes');
+		this.setState({datai: res.data});
+        let index = 0;
+		let b = 'F';
+		let id = 0;
+		for (let i = 0; i < res.data.length; i++) {
+			if(res.data[i].name == name){
+				index = i;
+				b = 'V';
+			}
+		}
+		if(b == 'V'){
+			id = res.data[index]._id;
+		}
+		alert(id)
 		 $(".home").append(`
 		   <div class="panelp">
 		     <div class="container-fluid mains">
@@ -69,9 +89,11 @@ class PanelP extends Component{
 			$(".profile").remove();
 			$(".panelp").remove();
 		})
-	    $(".delete").on("click",()=>{
-			this.delete(cookies);
-		})
+		$(".delete").on("click",()=>{
+			axios.delete('http://data-base-3.herokuapp.com/users/'+id)
+			this.delete(cookies)
+		}	
+		)
 	}
 	delete = (cookies) =>{
 		$(".panelp").append(`
@@ -102,11 +124,11 @@ class PanelP extends Component{
 		$(".buttons > .btn").css("margin","0 5%");
 		$(".buttons").css("7% 0");
 		$("#acept").on("click",()=>{
-            cookies.set("name","",{path: '/'});
-			cookies.set("email","",{path: '/'});
-			cookies.set("cover","",{path: '/'});
-			$(".profile").remove();
-			$(".panelp").remove();
+               cookies.set("name","",{path: '/'});
+			   cookies.set("email","",{path: '/'});
+			   cookies.set("cover","",{path: '/'});
+			   $(".profile").remove();
+			   $(".panelp").remove();
 		})
 		$("#cancel").on("click",()=>{
            $(".confirm").remove();

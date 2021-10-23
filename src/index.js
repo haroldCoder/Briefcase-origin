@@ -5,7 +5,6 @@ import $ from 'jquery';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import PanelP from './components/panelprofile.js';
-
 ReactDOM.render(
   <App/>,
   document.getElementById('root')
@@ -14,11 +13,10 @@ $("body").css("margin","0 0");
 let cookie = new Cookies();
 let profilep = new PanelP();
 $(".navbar").append(`
-			<div class="profile"></div>
-`);
+			  <div class="profile"></div>
+   `);
 if(cookie.get("name") == " " && cookie.get("email") == " " && cookie.get("cover") == " "){
    $(".profile").remove();
-   alert("$")
 }
 else{
   ReactDOM.render(

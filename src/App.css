@@ -117,3 +117,6 @@
 	font-family: fantasy;
 	padding: 5px 1.5%;
 }
+.pad{
+	padding: 0 0 !important;
+}

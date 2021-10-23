@@ -19,18 +19,17 @@ class Forms extends Component{
 		name: '',
 		email: '',
 		password: '',
-		data: []
+		data: [],
+		id: 0
 	}
 	componentDidMount(){
-		this.RequireData()
 	  if($(".input").length > 0)
-       
+       this.RequireData();
 	   this.style()
 	}
 	componentDidUpdate(){
-		this.RequireData()
 		if($(".input").length > 0)
-		  
+		  this.RequireData()
 		  this.style()
 	}
 	style = () =>{
@@ -63,7 +62,7 @@ class Forms extends Component{
 		  $(".form > form > button").eq(1).css("justify-content","center");
 	}
 	RequireData = async() =>{
-		const res = await axios.get('http://localhost:8080/api/users');
+		const res = await axios('http://data-base-3.herokuapp.com/users');
 		this.setState({data: res.data});
 	}
 	Press = () =>{
@@ -147,8 +146,7 @@ class Forms extends Component{
 			$(".win").remove()
 		})
 	}
-	succesR = (name, email, password) =>{
-		alert(this.state.data[0])
+	succesR = async(name, email, password) =>{
 		let index = 0;
 		let b = 'F';
 		for(let i = 0; i<this.state.data.length; i++){
@@ -161,17 +159,15 @@ class Forms extends Component{
 			alert("user exist");
 		}
 		else{
-			this.windowRegister(name,email);
-			this.profile.UI(name,email,false);  
+			this.windowRegister(name,email); 
+			this.profile.UI(name,email,false);
 			$(".rpanel").css("background","#000118e8");
 			$(".rpanel").css("height","100%");
-			$(".form").removeClass("container");
 			$(".rpanel > .title").css("width","100%");
 			$(".rpanel > .title > h1").css("text-align","center");
 			$(".rpanel > .title > h1").css("font-family","fantasy");
 			$(".rpanel > .title > h1").css("color","#777");
 			$(".rpanel > .title > img").css("margin","2% 25%");
-			$(".form").css("padding","0 0");
 			$(".panel").css("height","100%");
 			$(".draw").css("height","93%");
 			$(".form").css("height","100%");
@@ -182,11 +178,10 @@ class Forms extends Component{
 				$(".input").remove();
 			})
 			$(".rpanel > h5 > span").css("color","#30CCFF");
-			this.windowRegister(name,email)
-			axios.post('http://localhost:8080/api/users',{
+			$(".form").addClass("pad");
+			axios.post('https://data-base-3.herokuapp.com/users',{
 				name: name,
-				email: email,
-				password: password
+				email: email
 			})
 		}
 	}
@@ -204,10 +199,11 @@ class Forms extends Component{
 				<input type="password" className="inp" id="password" value={this.state.password} onChange={this.onChangePassword}/>
 				<button className="btn btn-primary" type="submit">{this.state.intro}</button>
 				<GoogleLogin
-				 clientId="709295496820-i7if56ountpgrq8u94iq06cf5q35ejn8.apps.googleusercontent.com"
+				 clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
 				 buttonText="Login"
 				 onSuccess={this.responseGoogle}
 				 onFailure={this.responseGoogle}
+				 cookiePolicy={'single_host_origin'}
 			   />
 			</form>
 			<footer>
@@ -221,8 +217,6 @@ class Forms extends Component{
 			<div className="form container">
 			<h1>{this.state.intro}</h1>
 			<form onSubmit={this.submitData}>
-			<h2>Name</h2>
-				<input type="text" className="inp" id="name" value={this.state.name} onChange={this.onChangeName}/>
 				<h2>E-mail</h2>
 				<input type="text" className="inp" id="email" value={this.state.email} onChange={this.onChangeEmail}/>
 				<h2>Password</h2>
@@ -230,8 +224,10 @@ class Forms extends Component{
 				<button className="btn btn-primary" type="submit">{this.state.intro}</button>
 				<GoogleLogin
 				 clientId="709295496820-5vr1gvn7iskih8ccrjji5vc0ijq5pant.apps.googleusercontent.com"
+				 buttonText="Login"
 				 onSuccess={this.responseGoogle}
 				 onFailure={this.responseGoogle}
+				 cookiePolicy={'single_host_origin'}
 			   />
 			</form>
 			<footer>

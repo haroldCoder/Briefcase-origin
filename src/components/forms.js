@@ -12,6 +12,7 @@ class Forms extends Component{
 	constructor(props){
 		super(props);
 		this.profile = new Profile(); 
+		this.cookie = new Cookies();
 	}
 	state = {
 		intro: 'Register',
@@ -160,7 +161,7 @@ class Forms extends Component{
 		}
 		else{
 			this.windowRegister(name,email); 
-			this.profile.UI(name,email,false);
+			this.profile.UI(name,email,false,this.cookie.get("cover"));
 			$(".rpanel").css("background","#000118e8");
 			$(".rpanel").css("height","100%");
 			$(".rpanel > .title").css("width","100%");
@@ -244,15 +245,15 @@ class Forms extends Component{
 		)
 	}
 	responseGoogle = (res) =>{
-		let cookie = new Cookies();
+		this.cookie = new Cookies();
 		if(this.state.intro == "Register"){
 		  this.succesR(res.profileObj.name,res.profileObj.email);
-		  cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+		  this.cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
 		}
 		else{
-			cookie.set("name",res.profileObj.name,{path: '/'});
-			cookie.set("email",res.profileObj.email,{path: '/'});
-			cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+			this.cookie.set("name",res.profileObj.name,{path: '/'});
+			this.cookie.set("email",res.profileObj.email,{path: '/'});
+			this.cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
 			this.succesL(res.profileObj.email,res.profileObj.password);
 			
 		}

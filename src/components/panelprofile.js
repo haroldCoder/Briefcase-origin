@@ -90,8 +90,8 @@ class PanelP extends Component{
 			$(".panelp").remove();
 		})
 		$(".delete").on("click",()=>{
-			axios.delete('http://data-base-3.herokuapp.com/users/'+id)
 			this.delete(cookies)
+			axios.delete('https://data-base-3.herokuapp.com/users/'+id)
 		}	
 		)
 	}

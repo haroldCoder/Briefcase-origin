@@ -10,12 +10,15 @@ class PanelP extends Component{
 	state ={
 		datai: [],
 	}
+	constructor(props){
+		super(props);
+		this.id = 0;
+	}
      UI = async(name,email,cover,confirm) =>{
 		const res = await axios.get('https://data-base-3.herokuapp.com/users');
 		this.setState({datai: res.data});
         let index = 0;
 		let b = 'F';
-		let id = 0;
 		for (let i = 0; i < res.data.length; i++) {
 			if(res.data[i].name == name){
 				index = i;
@@ -23,7 +26,7 @@ class PanelP extends Component{
 			}
 		}
 		if(b == 'V'){
-			id = res.data[index]._id;
+		   this.id = res.data[index]._id;
 		}
 		alert(id)
 		 $(".home").append(`
@@ -91,7 +94,6 @@ class PanelP extends Component{
 		})
 		$(".delete").on("click",()=>{
 			this.delete(cookies)
-			axios.delete('https://data-base-3.herokuapp.com/users/'+id)
 		}	
 		)
 	}
@@ -124,6 +126,7 @@ class PanelP extends Component{
 		$(".buttons > .btn").css("margin","0 5%");
 		$(".buttons").css("7% 0");
 		$("#acept").on("click",()=>{
+			axios.delete('https://data-base-3.herokuapp.com/users/'+this.id)
                cookies.set("name","",{path: '/'});
 			   cookies.set("email","",{path: '/'});
 			   cookies.set("cover","",{path: '/'});

@@ -11,7 +11,7 @@ class PanelP extends Component{
 		datai: [],
 	}
      UI = async(name,email,cover,confirm) =>{
-		const res = await axios.get('https://data-base-3.herokuapp.com/estudiantes');
+		const res = await axios.get('https://data-base-3.herokuapp.com/users');
 		this.setState({datai: res.data});
         let index = 0;
 		let b = 'F';

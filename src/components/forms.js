@@ -129,7 +129,7 @@ class Forms extends Component{
 			}
 		}
 		if(b == 'V'){
-			this.profile.UI(this.state.data[index].name,email,true);
+			this.profile.UI(this.state.data[index].name,email,true,this.cookie.get("cover"));
 			this.windowLogin(this.state.data[index].name,"win bg-success d-flex","welcome ");
 		}
 		else{

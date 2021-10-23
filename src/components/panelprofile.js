@@ -28,7 +28,7 @@ class PanelP extends Component{
 		if(b == 'V'){
 		   this.id = res.data[index]._id;
 		}
-		alert(id)
+		alert(this.id)
 		 $(".home").append(`
 		   <div class="panelp">
 		     <div class="container-fluid mains">

@@ -12,13 +12,15 @@ ReactDOM.render(
 $("body").css("margin","0 0");
 let cookie = new Cookies();
 let profilep = new PanelP();
-$(".navbar").append(`
-			  <div class="profile"></div>
-   `);
+
 if(cookie.get("name") == "" && cookie.get("email") == "" && cookie.get("cover") == ""){
    $(".profile").remove();
 }
 else{
+  alert(cookie.get("name"))
+  $(".navbar").append(`
+			  <div class="profile"></div>
+  `);
   ReactDOM.render(
     <img src={cookie.get('cover')} style={{width: '70px', height: '70px'}} onClick={()=>profilep.UI(cookie.get("name"),cookie.get("email"),cookie.get("cover"),true)}/>,
     document.querySelector(".profile")

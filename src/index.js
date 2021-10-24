@@ -17,7 +17,6 @@ if(cookie.get("name") == undefined && cookie.get("email") == undefined && cookie
    $(".profile").remove();
 }
 else{
-  alert(cookie.get("name"))
   $(".navbar").append(`
 			  <div class="profile"></div>
   `);

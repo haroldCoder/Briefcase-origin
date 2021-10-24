@@ -13,7 +13,7 @@ $("body").css("margin","0 0");
 let cookie = new Cookies();
 let profilep = new PanelP();
 
-if(cookie.get("name") == "" && cookie.get("email") == "" && cookie.get("cover") == ""){
+if(cookie.get("name") == undefined && cookie.get("email") == undefined && cookie.get("cover") == undefined){
    $(".profile").remove();
 }
 else{

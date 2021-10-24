@@ -10,15 +10,17 @@ class PanelP extends Component{
 	state ={
 		datai: [],
 	}
-	constructor(props){
-		super(props);
-		this.id = 0;
+	componentDidMount(){
+		this.getUsers()
+	}
+	componentDidUpdate(){
+		this.getUsers()
 	}
      UI = async(name,email,cover,confirm) =>{
 		const res = await axios.get('https://data-base-3.herokuapp.com/users');
-		this.setState({datai: res.data});
         let index = 0;
 		let b = 'F';
+		let id = 0;
 		for (let i = 0; i < res.data.length; i++) {
 			if(res.data[i].name == name){
 				index = i;
@@ -26,7 +28,7 @@ class PanelP extends Component{
 			}
 		}
 		if(b == 'V'){
-		   this.id = res.data[index]._id;
+			id = res.data[index]._id;
 		}
 		 $(".home").append(`
 		   <div class="panelp">
@@ -92,6 +94,7 @@ class PanelP extends Component{
 			$(".panelp").remove();
 		})
 		$(".delete").on("click",()=>{
+			axios.delete('http://data-base-3.herokuapp.com/users/'+id)
 			this.delete(cookies)
 		}	
 		)
@@ -125,7 +128,6 @@ class PanelP extends Component{
 		$(".buttons > .btn").css("margin","0 5%");
 		$(".buttons").css("7% 0");
 		$("#acept").on("click",()=>{
-			axios.delete('https://data-base-3.herokuapp.com/users/'+this.id)
                cookies.set("name","",{path: '/'});
 			   cookies.set("email","",{path: '/'});
 			   cookies.set("cover","",{path: '/'});

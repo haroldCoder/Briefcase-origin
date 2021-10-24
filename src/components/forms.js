@@ -12,7 +12,6 @@ class Forms extends Component{
 	constructor(props){
 		super(props);
 		this.profile = new Profile(); 
-		this.cookie = new Cookies();
 	}
 	state = {
 		intro: 'Register',
@@ -21,7 +20,7 @@ class Forms extends Component{
 		email: '',
 		password: '',
 		data: [],
-		id: 0
+		id: 0,
 	}
 	componentDidMount(){
 	  if($(".input").length > 0)
@@ -129,7 +128,7 @@ class Forms extends Component{
 			}
 		}
 		if(b == 'V'){
-			this.profile.UI(this.state.data[index].name,email,true,this.cookie.get("cover"));
+			this.profile.UI(this.state.data[index].name,email,true);
 			this.windowLogin(this.state.data[index].name,"win bg-success d-flex","welcome ");
 		}
 		else{
@@ -161,7 +160,7 @@ class Forms extends Component{
 		}
 		else{
 			this.windowRegister(name,email); 
-			this.profile.UI(name,email,false,this.cookie.get("cover"));
+			this.profile.UI(name,email,false);
 			$(".rpanel").css("background","#000118e8");
 			$(".rpanel").css("height","100%");
 			$(".rpanel > .title").css("width","100%");
@@ -245,17 +244,18 @@ class Forms extends Component{
 		)
 	}
 	responseGoogle = (res) =>{
-		this.cookie = new Cookies();
+		const cookie = new Cookies()
 		if(this.state.intro == "Register"){
+		  cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
 		  this.succesR(res.profileObj.name,res.profileObj.email);
-		  this.cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+		  
 		}
 		else{
-			this.cookie.set("name",res.profileObj.name,{path: '/'});
-			this.cookie.set("email",res.profileObj.email,{path: '/'});
-			this.cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+			cookie.set("name",res.profileObj.name,{path: '/'});
+			cookie.set("email",res.profileObj.email,{path: '/'});
+			cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
 			this.succesL(res.profileObj.email,res.profileObj.password);
-			
+						
 		}
 	}
 }

@@ -15,13 +15,13 @@ let profilep = new PanelP();
 $(".navbar").append(`
 			  <div class="profile"></div>
    `);
-if(cookie.get("name") == " " && cookie.get("email") == " " && cookie.get("cover") == " "){
+if(cookie.get("name") == "" && cookie.get("email") == "" && cookie.get("cover") == ""){
    $(".profile").remove();
 }
 else{
   ReactDOM.render(
     <img src={cookie.get('cover')} style={{width: '70px', height: '70px'}} onClick={()=>profilep.UI(cookie.get("name"),cookie.get("email"),cookie.get("cover"),true)}/>,
     document.querySelector(".profile")
-  );
-  $(".profile").css("margin","4%");
+  ); 
 }
+$(".contact").css("margin-right","3%");

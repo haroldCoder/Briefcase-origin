@@ -118,7 +118,7 @@ class Forms extends Component{
 		 </div>
 		`)
 	}
-	succesL = (email,password) =>{
+	succesL = (name,email,password,imageUrl) =>{
 		let index = 0;
 		let b = 'F';
 		for(let i = 0; i<this.state.data.length; i++){
@@ -128,6 +128,9 @@ class Forms extends Component{
 			}
 		}
 		if(b == 'V'){
+			cookie.set("name",name,{path: '/'});
+			cookie.set("email",email,{path: '/'});
+			cookie.set("cover",imageUrl,{path: '/'});
 			this.profile.UI(this.state.data[index].name,email,true);
 			$(".input").remove();
 			this.windowLogin(this.state.data[index].name,"win bg-success d-flex","welcome ");
@@ -253,11 +256,7 @@ class Forms extends Component{
 		  
 		}
 		else{
-			cookie.set("name",res.profileObj.name,{path: '/'});
-			cookie.set("email",res.profileObj.email,{path: '/'});
-			cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
-			this.succesL(res.profileObj.email,res.profileObj.password);
-						
+			this.succesL(res.profileObj.name,res.profileObj.email,res.profileObj.password,res.profileObj.imageUrl);			
 		}
 	}
 }

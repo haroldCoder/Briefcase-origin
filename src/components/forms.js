@@ -152,7 +152,7 @@ class Forms extends Component{
 			$(".win").remove()
 		})
 	}
-	succesR = async(name, email, password) =>{
+	succesR = async(name, email,cover) =>{
 		let index = 0;
 		let b = 'F';
 		for(let i = 0; i<this.state.data.length; i++){
@@ -165,6 +165,7 @@ class Forms extends Component{
 			alert("user exist");
 		}
 		else{
+			this.cookie.set("cover",cover,{path: '/'});
 			this.windowRegister(name,email); 
 			this.profile.UI(name,email,false);
 			$(".rpanel").css("background","#000118e8");
@@ -251,9 +252,7 @@ class Forms extends Component{
 	}
 	responseGoogle = (res) =>{
 		if(this.state.intro == "Register"){
-		  this.cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
-		  this.succesR(res.profileObj.name,res.profileObj.email);
-		  
+		  this.succesR(res.profileObj.name,res.profileObj.email,res.profileObj.imageUrl);	  
 		}
 		else{
 			this.succesL(res.profileObj.name,res.profileObj.email,res.profileObj.password,res.profileObj.imageUrl);			

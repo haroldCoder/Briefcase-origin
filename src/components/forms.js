@@ -62,7 +62,7 @@ class Forms extends Component{
 		  $(".form > form > button").eq(1).css("justify-content","center");
 	}
 	RequireData = async() =>{
-		const res = await axios('http://data-base-3.herokuapp.com/users');
+		const res = await axios('https://db-coderx.herokuapp.com/users');
 		this.setState({data: res.data});
 	}
 	Press = () =>{
@@ -179,7 +179,7 @@ class Forms extends Component{
 			})
 			$(".rpanel > h5 > span").css("color","#30CCFF");
 			$(".form").addClass("pad");
-			axios.post('https://data-base-3.herokuapp.com/users',{
+			axios.post('https://db-coderx.herokuapp.com/users',{
 				name: name,
 				email: email
 			})

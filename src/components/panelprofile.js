@@ -92,6 +92,7 @@ class PanelP extends Component{
 			$(".panelp").remove();
 		})
 		$(".delete").on("click",()=>{
+			alert(id)
 			axios.delete('https://db-coderx.herokuapp.com/users/'+id)
 			this.delete(cookies)
 		}	

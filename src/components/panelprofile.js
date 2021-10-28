@@ -11,7 +11,7 @@ class PanelP extends Component{
 		datai: [],
 	}
      UI = (name,email,cover,confirm) =>{
-		const res = axios.get('https://data-base-3.herokuapp.com/users');
+		const res = axios.get('https://db-coderx.herokuapp.com/users');
         let index = 0;
 		let b = 'F';
 		let id = 0;
@@ -88,7 +88,7 @@ class PanelP extends Component{
 			$(".panelp").remove();
 		})
 		$(".delete").on("click",()=>{
-			axios.delete('http://data-base-3.herokuapp.com/users/'+id)
+			axios.delete('https://db-coderx.herokuapp.com/users/'+id)
 			this.delete(cookies)
 		}	
 		)

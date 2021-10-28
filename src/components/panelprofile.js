@@ -7,12 +7,17 @@ import axios from "axios";
 import Forms from "./forms";
 
 class PanelP extends Component{
+	constructor(props){
+		super(props);
+		this.daten = '';
+	}
 	state ={
 		datai: [],
 	}
 	getData = async() =>{
 		const res = await axios.get('https://db-coderx.herokuapp.com/users');
 		this.setState({datai:  res.data});
+		this.daten = res.data;
 	}
      UI = (name,email,cover,confirm) =>{
 		this.getData()
@@ -92,7 +97,7 @@ class PanelP extends Component{
 			$(".panelp").remove();
 		})
 		$(".delete").on("click",()=>{
-			alert(id)
+			alert(this.daten[0].name)
 			axios.delete('https://db-coderx.herokuapp.com/users/'+id)
 			this.delete(cookies)
 		}	

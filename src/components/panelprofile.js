@@ -20,19 +20,7 @@ class PanelP extends Component{
 		this.daten = res.data;
 	}
      UI = (name,email,cover,confirm) =>{
-		this.getData()
-        let index = 0;
-		let b = 'F';
-		let id = 0;
-		for (let i = 0; i < this.daten.length; i++) {
-			if(this.daten[i].name == name){
-				index = i;
-				b = 'V';
-			}
-		}
-		if(b == 'V'){
-			id = this.daten[index]._id;
-		}
+		 this.getData()
 		 $(".home").append(`
 		   <div class="panelp">
 		     <div class="container-fluid mains">
@@ -97,13 +85,11 @@ class PanelP extends Component{
 			$(".panelp").remove();
 		})
 		$(".delete").on("click",()=>{
-			alert(id);
-			axios.delete('https://db-coderx.herokuapp.com/users/'+id)
-			this.delete(cookies)
+			this.delete(cookies,name)
 		}	
 		)
 	}
-	delete = (cookies) =>{
+	delete = (cookies,name) =>{
 		$(".panelp").append(`
 		  <div class="confirm"></div>
 		`);
@@ -132,6 +118,19 @@ class PanelP extends Component{
 		$(".buttons > .btn").css("margin","0 5%");
 		$(".buttons").css("7% 0");
 		$("#acept").on("click",()=>{
+			let index = 0;
+		    let b = 'F';
+		    let id = 0;
+			for(var i = 0; i<this.daten.length; i++){
+				if(this.daten[i].name == name){
+					index = i;
+					b = 'V';
+				}
+			}
+		    if(b == 'V'){
+			   id = this.daten[index]._id;
+		    }
+			axios.delete('https://db-coderx.herokuapp.com/users/'+id)
                cookies.set("name","",{path: '/'});
 			   cookies.set("email","",{path: '/'});
 			   cookies.set("cover","",{path: '/'});

@@ -10,19 +10,23 @@ class PanelP extends Component{
 	state ={
 		datai: [],
 	}
+	getData = async() =>{
+		const res = await axios.get('https://db-coderx.herokuapp.com/users');
+		this.setState({datai:  res.data});
+	}
      UI = (name,email,cover,confirm) =>{
-		const res = axios.get('https://db-coderx.herokuapp.com/users');
+		this.getData()
         let index = 0;
 		let b = 'F';
 		let id = 0;
-		for (let i = 0; i < res.data.length; i++) {
-			if(res.data[i].name == name){
+		for (let i = 0; i < this.state.datai.length; i++) {
+			if(this.state.datai[i].name == name){
 				index = i;
 				b = 'V';
 			}
 		}
 		if(b == 'V'){
-			id = res.data[index]._id;
+			id = this.state.datai[index]._id;
 		}
 		 $(".home").append(`
 		   <div class="panelp">

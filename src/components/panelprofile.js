@@ -24,14 +24,14 @@ class PanelP extends Component{
         let index = 0;
 		let b = 'F';
 		let id = 0;
-		for (let i = 0; i < this.state.datai.length; i++) {
-			if(this.state.datai[i].name == name){
+		for (let i = 0; i < this.daten.length; i++) {
+			if(this.daten[i].name == name){
 				index = i;
 				b = 'V';
 			}
 		}
 		if(b == 'V'){
-			id = this.state.datai[index]._id;
+			id = this.daten[index]._id;
 		}
 		 $(".home").append(`
 		   <div class="panelp">
@@ -97,7 +97,7 @@ class PanelP extends Component{
 			$(".panelp").remove();
 		})
 		$(".delete").on("click",()=>{
-			console.log(this.daten[0].name);
+			alert(id);
 			axios.delete('https://db-coderx.herokuapp.com/users/'+id)
 			this.delete(cookies)
 		}	

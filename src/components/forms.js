@@ -12,6 +12,7 @@ class Forms extends Component{
 	constructor(props){
 		super(props);
 		this.profile = new Profile(); 
+		this.cookie = new Cookies()
 	}
 	state = {
 		intro: 'Register',
@@ -128,9 +129,9 @@ class Forms extends Component{
 			}
 		}
 		if(b == 'V'){
-			cookie.set("name",name,{path: '/'});
-			cookie.set("email",email,{path: '/'});
-			cookie.set("cover",imageUrl,{path: '/'});
+			this.cookie.set("name",name,{path: '/'});
+			this.cookie.set("email",email,{path: '/'});
+			this.cookie.set("cover",imageUrl,{path: '/'});
 			this.profile.UI(this.state.data[index].name,email,true);
 			$(".input").remove();
 			this.windowLogin(this.state.data[index].name,"win bg-success d-flex","welcome ");
@@ -249,9 +250,8 @@ class Forms extends Component{
 		)
 	}
 	responseGoogle = (res) =>{
-		const cookie = new Cookies()
 		if(this.state.intro == "Register"){
-		  cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
+		  this.cookie.set("cover",res.profileObj.imageUrl,{path: '/'});
 		  this.succesR(res.profileObj.name,res.profileObj.email);
 		  
 		}

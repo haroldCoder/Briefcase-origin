@@ -129,9 +129,11 @@ class Forms extends Component{
 		}
 		if(b == 'V'){
 			this.profile.UI(this.state.data[index].name,email,true);
+			$(".input").remove();
 			this.windowLogin(this.state.data[index].name,"win bg-success d-flex","welcome ");
 		}
 		else{
+			$(".input").remove();
 			this.windowLogin(this.state.data[index].name,"win bg-danger d-flex","User no register ");
 		}
 		$(".win").css("padding","10px 10px");
